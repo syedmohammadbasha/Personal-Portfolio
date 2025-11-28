@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Basha's Portfolio</title>
+    <!-- Load Tailwind CSS CDN --><script src="https://cdn.tailwindcss.com"></script>
+    <!-- Configure Tailwind for custom colors and font --><script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'secondary-dark': 'rgba(30, 30, 30, 0.95)', /* Slightly darker and less transparent for content sections */
+                        'accent': '#20c997', /* Vibrant Teal */
+                        'text-light': '#F0F0F0', /* Brighter light text */
+                        'text-muted': '#B0B0B0', /* Lighter muted text */
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Custom CSS for smooth scrolling behavior and general look */
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            color: #F0F0F0;
+            /* Dynamic Gradient Background */
+            background: linear-gradient(135deg, #0A192F, #301934, #1B5E20, #004D40, #4A148C);
+            background-size: 400% 400%; /* Make gradient larger than viewport for animation */
+            animation: gradientShift 20s ease infinite; /* Slow, continuous animation */
+            background-attachment: fixed; /* Ensures gradient covers the whole page on scroll */
+        }
+
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* Styling for the sticky header shadow */
+        .sticky-header {
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.5); /* Stronger shadow for contrast */
+        }
+        
+        /* Basic scrollbar styling for aesthetics */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #20c997; /* Teal scrollbar thumb */
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #333; /* Darker scrollbar track */
+        }
+
+        /* Adjusting header background transparency to blend with gradient */
+        #header {
+            background-color: rgba(30, 30, 30, 0.9); /* Slightly darker and more opaque */
+        }
+
+        #header.scrolled { /* When scrolled, make it fully opaque or nearly so */
+            background-color: rgba(30, 30, 30, 0.98);
+        }
+    </style>
+</head>
+<body class="antialiased min-h-screen">
+
+    <!-- Header & Navigation --><header id="header" class="sticky top-0 z-50 sticky-header transition-all duration-300">
+        <nav class="container mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
+            <h1 class="text-2xl font-bold text-accent">Mohammad Basha</h1>
+            <div id="nav-menu" class="hidden md:flex space-x-6">
+                <a href="#about" class="text-text-light hover:text-accent transition duration-200 text-lg">About</a>
+                <a href="#skills" class="text-text-light hover:text-accent transition duration-200 text-lg">Skills</a>
+                <a href="#projects" class="text-text-light hover:text-accent transition duration-200 text-lg">Projects</a>
+                <a href="#contact" class="text-text-light hover:text-accent transition duration-200 text-lg">Contact</a>
+            </div>
+            <!-- Mobile Menu Button (Hamburger) --><button id="menu-toggle" class="md:hidden text-text-light focus:outline-none">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+            </button>
+        </nav>
+         <!-- Mobile Menu Drawer (Hidden by default) --><div id="mobile-menu" class="md:hidden hidden bg-secondary-dark pb-4 border-t border-gray-700">
+            <a href="#about" class="block py-2 px-4 text-text-light hover:bg-gray-700 text-lg" onclick="document.getElementById('mobile-menu').classList.add('hidden')">About</a>
+            <a href="#skills" class="block py-2 px-4 text-text-light hover:bg-gray-700 text-lg" onclick="document.getElementById('mobile-menu').classList.add('hidden')">Skills</a>
+            <a href="#projects" class="block py-2 px-4 text-text-light hover:bg-gray-700 text-lg" onclick="document.getElementById('mobile-menu').classList.add('hidden')">Projects</a>
+            <a href="#contact" class="block py-2 px-4 text-text-light hover:bg-gray-700 text-lg" onclick="document.getElementById('mobile-menu').classList.add('hidden')">Contact</a>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-4 sm:px-6 lg:px-8">
+
+        <!-- Hero Section --><section id="hero" class="min-h-[85vh] flex items-center pt-20">
+            <div class="max-w-4xl mx-auto text-center md:text-left">
+                <p class="text-xl text-accent font-medium mb-3">Hi, I'm</p>
+                <h2 class="text-6xl sm:text-7xl lg:text-8xl font-extrabold leading-tight text-text-light">
+                    Mohammad Basha
+                </h2>
+                <!-- <h3 class="text-4xl sm:text-5xl lg:text-6xl font-bold text-text-muted mt-3">
+                    Iam M.Tech. Student at GPCET
+                </h3> -->
+                <p class="mt-8 text-lg text-text-muted max-w-xl mx-auto md:mx-0">
+                    Iam M.Tech. Student at GPCET.
+                </p>
+                <a href="#projects" class="mt-10 inline-block bg-accent text-white font-semibold py-3 px-8 rounded-lg shadow-lg hover:bg-[#1a9f77] transition duration-300 text-lg transform hover:scale-105">
+                    View My Work
+                </a>
+            </div>
+        </section>
+
+        <!-- About Me Section --><section id="about" class="py-20 border-t border-gray-700">
+            <h2 class="text-4xl font-bold mb-10 text-center text-text-light">About Me</h2>
+            <div class="max-w-3xl mx-auto bg-secondary-dark p-8 rounded-xl shadow-2xl">
+                <p class="text-lg text-text-muted leading-relaxed">
+                    I am currently pursuing my M.Tech. at G. Pullaiah College of Engineering and Technology (GPCET). My academic focus is on advanced topics in "Computer Science and Engineering", engaging in research and practical implementation of cutting-edge technologies. My postgraduate studies have significantly enhanced my skills in deep theoretical understanding, complex problem-solving, and efficient system design, which perfectly complements my hands-on development experience.
+                </p>
+                <p class="text-lg text-text-muted leading-relaxed mt-4">
+                    I am dedicated to leveraging my academic rigor and technical expertise to build innovative, data-driven solutions. I believe in combining theoretical knowledge with practical skills to tackle complex, real-world engineering challenges.
+                </p>
+            </div>
+        </section>
+
+        <!-- Skills Section --><section id="skills" class="py-20 border-t border-gray-700">
+            <h2 class="text-4xl font-bold mb-10 text-center text-text-light">Technical Skills</h2>
+            <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-6 max-w-5xl mx-auto">
+                <!-- Skill Card 1: Frontend --><div class="bg-secondary-dark p-6 rounded-lg shadow-xl text-center hover:shadow-accent/50 transition duration-300 transform hover:scale-[1.02]">
+                    <svg class="w-10 h-10 mx-auto text-accent mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path></svg>
+                    <h3 class="text-xl font-semibold text-text-light mb-1">Programmin Languages</h3>
+                    <p class="text-text-muted text-sm">C Programming, Python, Java</p>
+                </div>
+                <!--Skill Card 2: Backend --><div class="bg-secondary-dark p-6 rounded-lg shadow-xl text-center hover:shadow-accent/50 transition duration-300 transform hover:scale-[1.02]">
+                    <svg class="w-10 h-10 mx-auto text-accent mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L12 19.25M12 4.75L9.75 7M12 19.25l-4-4M12 4.75l-4 4m8 0l4 4-4 4"></path></svg>
+                    <h3 class="text-xl font-semibold text-text-light mb-1">Frontend</h3>
+                    <p class="text-text-muted text-sm">HTML, CSS, JavaScript, Bootstrap</p>
+                </div>
+                <!-- Skill Card 3: Databases --><div class="bg-secondary-dark p-6 rounded-lg shadow-xl text-center hover:shadow-accent/50 transition duration-300 transform hover:scale-[1.02]">
+                    <svg class="w-10 h-10 mx-auto text-accent mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 7v10c0 1.1.9 2 2 2h12a2 2 0 002-2V7M4 7h16M4 7a2 2 0 012-2h12a2 2 0 012 2M4 7L12 5l8 2"></path></svg>
+                    <h3 class="text-xl font-semibold text-text-light mb-1">Databases</h3>
+                    <p class="text-text-muted text-sm">SQL</p>
+                </div>
+                <!-- Skill Card 4: DevOps/Cloud --><div class="bg-secondary-dark p-6 rounded-lg shadow-xl text-center hover:shadow-accent/50 transition duration-300 transform hover:scale-[1.02]">
+                    <svg class="w-10 h-10 mx-auto text-accent mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-2-2h-4a2 2 0 00-2 2M10.707 10.707L8 8m4 4l4-4M4 14v-4a2 2 0 012-2h12a2 2 0 012 2v4"></path></svg>
+                    <h3 class="text-xl font-semibold text-text-light mb-1">DevOps/Cloud</h3>
+                    <p class="text-text-muted text-sm">Git, GitHub</p>
+                </div>
+            </div>
+        </section>
+
+               <!-- Projects Section --><section id="projects" class="py-20 border-t border-gray-700">
+            <h2 class="text-4xl font-bold mb-10 text-center text-text-light">Featured Projects</h2>
+            <div class="grid md:grid-cols-2 gap-10 max-w-6xl mx-auto">
+                <!-- Project Card 1: Analog Clock --><div class="bg-secondary-dark rounded-xl overflow-hidden shadow-2xl group transition duration-300 hover:shadow-accent/70">
+                    <img src="https://placehold.co/600x400/2a2a2a/20c997?text=Analog+Clock" alt="Analog Clock Project" onerror="this.onerror=null;this.src='https://placehold.co/600x400/2a2a2a/20c997?text=Analog+Clock'" class="w-full h-48 object-cover transition-transform duration-500 group-hover:scale-105">
+                    <div class="p-6">
+                        <h3 class="text-2xl font-bold text-accent mb-2">Analog Clock</h3>
+                        <p class="text-text-muted mb-4">A sleek, purely frontend analog clock built with HTML, CSS, and vanilla JavaScript for smooth, precise time visualization.</p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="text-xs font-semibold inline-block py-1 px-3 uppercase rounded-full text-white bg-[#e34c26]">HTML5</span>
+                            <span class="text-xs font-semibold inline-block py-1 px-3 uppercase rounded-full text-white bg-[#264de4]">CSS3</span>
+                            <span class="text-xs font-semibold inline-block py-1 px-3 uppercase rounded-full bg-[#f0db4f] text-gray-800">JavaScript</span>
+                        </div>
+                        <div class="flex space-x-4">
+                            <a href="https://github.com/syedmohammadbasha/Analog-clock" class="text-text-light hover:text-accent font-medium transition duration-300 border-b border-transparent hover:border-accent">View Code &rarr;</a>
+                            <!-- <a href="https://github.com/syedmohammadbasha/Analog-clock" class="text-text-light hover:text-accent font-medium transition duration-300 border-b border-transparent hover:border-accent">Live Demo &rarr;</a> -->
+                        </div>
+                    </div> 
+                </div>
+
+                <!-- Project Card 2: Windows 11 Clone (Previously Real-Time Analytics Dashboard) --><div class="bg-secondary-dark rounded-xl overflow-hidden shadow-2xl group transition duration-300 hover:shadow-accent/70">
+                    <img src="https://placehold.co/600x400/2a2a2a/20c997?text=Windows+11+Clone" alt="Windows 11 Clone Project" onerror="this.onerror=null;this.src='https://placehold.co/600x400/2a2a2a/20c997?text=Windows+11+Clone'" class="w-full h-48 object-cover transition-transform duration-500 group-hover:scale-105">
+                    <div class="p-6">
+                        <h3 class="text-2xl font-bold text-accent mb-2">Windows 11 Clone</h3>
+                        <p class="text-text-muted mb-4"> Developed Windows 11 clone replicating key UI elements like start menu, task bar to create better experience.</p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="text-xs font-semibold inline-block py-1 px-3 uppercase rounded-full text-white bg-[#9242d0]">HTML</span>
+                            <span class="text-xs font-semibold inline-block py-1 px-3 uppercase rounded-full text-white bg-[#06b6d4]">CSS</span>
+                        </div>
+                        <div class="flex space-x-4">
+                            <a href="https://github.com/syedmohammadbasha/Windows11-Clone-" class="text-text-light hover:text-accent font-medium transition duration-300 border-b border-transparent hover:border-accent">View Code &rarr;</a>
+                            <!-- <a href="" class="text-text-light hover:text-accent font-medium transition duration-300 border-b border-transparent hover:border-accent">Live Demo &rarr;</a> -->
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Contact Section --><section id="contact" class="py-20 border-t border-gray-700">
+            <h2 class="text-4xl font-bold mb-10 text-center text-text-light">Get In Touch</h2>
+            <div class="max-w-xl mx-auto text-center bg-secondary-dark p-8 rounded-xl shadow-2xl">
+                <p class="text-lg text-text-muted mb-6">
+                    I'm currently looking for new opportunities. Whether you have a question or just want to say hi, my inbox is always open!
+                </p>
+                <a href="mailto:syedmohammadbasha1@example.com" class="inline-block bg-accent text-white font-semibold py-3 px-8 rounded-lg shadow-lg hover:bg-[#1a9f77] transition duration-300 text-lg transform hover:scale-105">
+                    Say Hello
+                </a>
+
+                <div class="mt-8 pt-6 border-t border-gray-700 flex justify-center space-x-6">
+                    <a href="https://github.com/syedmohammadbasha" target="_blank" rel="noopener noreferrer" class="text-text-light hover:text-accent transition duration-300">
+                        <svg class="w-8 h-8" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.809 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.087-.744.084-.73.084-.73 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.118-3.176 0 0 1.008-.322 3.301 1.231.957-.266 1.983-.399 3.003-.404 1.02.005 2.046.138 3.003.404 2.294-1.553 3.302-1.231 3.302-1.231.653 1.653.242 2.873.118 3.176.766.84 1.235 1.911 1.235 3.221 0 4.609-2.808 5.624-5.475 5.923.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.8 0 4.768-1.579 8.2-6.086 8.2-11.387C24 5.373 18.627 0 12 0z"/></svg>
+                    </a>
+                    <a href="https://linkedin.com/in/syed-mohammad-basha" target="_blank" rel="noopener noreferrer" class="text-text-light hover:text-accent transition duration-300">
+                        <svg class="w-8 h-8" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.249-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer --><footer class="bg-secondary-dark mt-12 py-6 border-t border-gray-700">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8 text-center text-text-muted text-sm">
+            <p>&copy; <span id="current-year"></span> Mohammad Basha. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- JavaScript for Mobile Menu and Smooth Scrolling --><script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const menuToggle = document.getElementById('menu-toggle');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const navLinks = document.querySelectorAll('#nav-menu a, #mobile-menu a');
+            const currentYearSpan = document.getElementById('current-year');
+            const header = document.getElementById('header');
+
+            // Set current year in footer
+            currentYearSpan.textContent = new Date().getFullYear();
+
+            // 1. Mobile Menu Toggle
+            menuToggle.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+            });
+
+            // 2. Smooth Scrolling for Navigation (optional, as scroll-smooth is on body, but ensures compatibility)
+            navLinks.forEach(link => {
+                link.addEventListener('click', function (e) {
+                    const targetId = this.getAttribute('href');
+                    const targetElement = document.querySelector(targetId);
+
+                    if (targetElement) {
+                        e.preventDefault();
+                        targetElement.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                        // Close mobile menu after clicking a link
+                        if (!mobileMenu.classList.contains('hidden')) {
+                            mobileMenu.classList.add('hidden');
+                        }
+                    }
+                });
+            });
+
+            // 3. Header opacity/shadow on scroll (aesthetic improvement)
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 50) {
+                    header.classList.add('scrolled');
+                } else {
+                    header.classList.remove('scrolled');
+                }
+            });
+        });
+    </script>
+
+</body>
+</html>
